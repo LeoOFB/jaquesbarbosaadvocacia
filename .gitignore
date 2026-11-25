@@ -1,0 +1,7 @@
+# Configuração local (não publicar)
+.claude/
+.netlify/
+
+# Arquivos usados só no Netlify
+_headers
+_redirects
