@@ -424,6 +424,15 @@ html.lenis, html.lenis body { height: auto; }
 .area__body > div { overflow: hidden; }
 .area__body p { padding: 0 0 32px 68px; color: var(--ink-soft); max-width: 60ch; }
 .area.is-open .area__body { grid-template-rows: 1fr; }
+.area__body p:has(+ .area__cta) { padding-bottom: 16px; }
+.area__cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 0 0 32px 68px; padding-bottom: 3px;
+  font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--navy); border-bottom: 1px solid var(--gold);
+  transition: gap .3s var(--ease), color .3s;
+}
+.area__cta:hover { gap: 14px; color: var(--gold); }
 
 /* ---------- Fundador ---------- */
 .founder { background: var(--navy); color: rgba(255, 255, 255, .82); position: relative; overflow: clip; } /* clip (não hidden) para o position: sticky funcionar */
@@ -487,6 +496,18 @@ html.lenis, html.lenis body { height: auto; }
 .award p { font-size: 15px; color: rgba(255, 255, 255, .7); max-width: 50ch; }
 
 /* linha do tempo */
+.roles { margin-top: 12px; }
+.roles li {
+  position: relative; padding: 14px 0 14px 26px;
+  border-bottom: 1px solid var(--line-light);
+  font-size: 15px; line-height: 1.55; color: rgba(255, 255, 255, .72);
+}
+.roles li:last-child { border-bottom: 0; }
+.roles li::before { content: ''; position: absolute; left: 0; top: 25px; width: 12px; height: 1px; background: var(--gold-light); }
+.roles strong { font-weight: 600; color: #fff; }
+.roles span { color: var(--gold-light); font-size: 13px; letter-spacing: .04em; white-space: nowrap; }
+.roles span::before { content: '· '; color: rgba(255, 255, 255, .35); }
+
 .timeline { position: relative; margin-top: 16px; padding-left: 28px; }
 .timeline::before { content: ''; position: absolute; left: 4px; top: 10px; bottom: 10px; width: 1px; background: linear-gradient(var(--gold-light), rgba(255, 223, 127, .1)); }
 .timeline li { position: relative; display: grid; grid-template-columns: 90px 1fr; gap: 20px; align-items: baseline; padding: 16px 0; }
@@ -696,6 +717,7 @@ body.is-loaded .dev-badge { opacity: 1; transform: none; }
   .value, .value:nth-child(odd) { border-right: 0; margin-right: 0; padding-right: 0; }
   .area__head { grid-template-columns: 40px 1fr 20px; padding: 24px 0; }
   .area__body p { padding-left: 52px; }
+  .area__cta { margin-left: 52px; }
   .timeline li { grid-template-columns: 1fr; gap: 4px; }
   .credentials { grid-template-columns: 1fr; }
   .credentials li, .credentials li:first-child { border-left: 0; padding: 18px 0; display: flex; align-items: baseline; gap: 16px; }
