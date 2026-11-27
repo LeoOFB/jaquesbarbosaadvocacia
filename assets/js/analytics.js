@@ -3,7 +3,7 @@
    O GA só é carregado depois que o visitante aceita.
    ========================================================= */
 (() => {
-  const GA_ID = ''; // ex.: 'G-XXXXXXXXXX'. Vazio = medição desligada.
+  const GA_ID = 'G-CV7DDSDFZN'; // ex.: 'G-XXXXXXXXXX'. Vazio = medição desligada.
   const KEY = 'jb-cookies'; // 'aceito' | 'recusado'
 
   const store = {
