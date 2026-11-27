@@ -230,6 +230,7 @@
       '',
       d.get('mensagem').trim()
     ].join('\n');
+    window.jbTrack?.('whatsapp_click', { origem: 'formulario', assunto: d.get('assunto') });
     window.open(`https://wa.me/556236373859?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
   });
 
