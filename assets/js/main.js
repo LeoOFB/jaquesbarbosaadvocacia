@@ -8,7 +8,7 @@
     lenis = new Lenis({ duration: 1.15, easing: t => 1 - Math.pow(1 - t, 4), smoothWheel: true });
     const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
     requestAnimationFrame(raf);
-    lenis.stop(); // travado durante a abertura
+    if (body.classList.contains('is-loading')) lenis.stop(); // travado durante a abertura
   }
   const headerOffset = () => -(document.getElementById('header').offsetHeight - 1);
   document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -44,7 +44,7 @@
     const y = window.scrollY;
     header.classList.toggle('is-scrolled', y > 40);
     header.classList.toggle('is-hidden', y > lastY && y > window.innerHeight * 0.8 && !body.classList.contains('menu-open'));
-    waFloat.classList.toggle('is-visible', y > window.innerHeight * 0.5);
+    if (waFloat) waFloat.classList.toggle('is-visible', y > window.innerHeight * 0.5);
     lastY = y;
   };
   window.addEventListener('scroll', onScroll, { passive: true });
@@ -102,9 +102,11 @@
     const vh = window.innerHeight;
 
     // Hero inset + cantos arredondados
-    const p = Math.min(Math.max(window.scrollY / (hero.offsetHeight * 0.9), 0), 1);
-    const inset = p * (window.innerWidth < 700 ? 10 : 28);
-    heroFrame.style.clipPath = `inset(0 ${inset}px ${inset * 1.6}px ${inset}px round 0 0 ${p * 24}px ${p * 24}px)`;
+    if (heroFrame && hero) {
+      const p = Math.min(Math.max(window.scrollY / (hero.offsetHeight * 0.9), 0), 1);
+      const inset = p * (window.innerWidth < 700 ? 10 : 28);
+      heroFrame.style.clipPath = `inset(0 ${inset}px ${inset * 1.6}px ${inset}px round 0 0 ${p * 24}px ${p * 24}px)`;
+    }
 
     // Seções escuras: recuo + cantos arredondados que somem conforme a seção ocupa a tela
     const maxInset = window.innerWidth < 700 ? 12 : 56;
@@ -203,14 +205,14 @@
     btn.addEventListener('mouseenter', () => showPreview(area.dataset.area));
   });
   // ao tirar o mouse da lista, volta para a imagem da área aberta
-  document.querySelector('.areas__list').addEventListener('mouseleave', () => {
+  document.querySelector('.areas__list')?.addEventListener('mouseleave', () => {
     const open = document.querySelector('.area.is-open');
     if (open) showPreview(open.dataset.area);
   });
 
   /* ---------- Formulário → WhatsApp ---------- */
   const form = document.getElementById('contactForm');
-  form.addEventListener('submit', (e) => {
+  if (form) form.addEventListener('submit', (e) => {
     e.preventDefault();
     let ok = true;
     form.querySelectorAll('[required]').forEach(input => {
@@ -235,5 +237,6 @@
   });
 
   /* ---------- Ano no rodapé ---------- */
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
 })();

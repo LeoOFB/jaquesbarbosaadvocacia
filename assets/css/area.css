@@ -1,0 +1,137 @@
+/* =========================================================
+   Páginas de área de atuação
+   ========================================================= */
+.area-page { background: var(--paper-2, #f6f5f1); }
+
+/* ---------- Topo ---------- */
+.ap-hero {
+  position: relative; overflow: hidden;
+  background: var(--navy); color: #fff;
+  padding: calc(var(--header-h) + clamp(48px, 8vw, 96px)) 0 clamp(64px, 9vw, 120px);
+}
+.ap-hero::after {
+  content: ''; position: absolute; right: -8%; top: -20%; width: 55%; aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgba(255, 223, 127, .10), transparent 70%);
+  pointer-events: none;
+}
+.ap-hero__grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(32px, 6vw, 88px); align-items: center; }
+.ap-crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 12px; letter-spacing: .08em; color: rgba(255, 255, 255, .55); margin-bottom: 28px; }
+.ap-crumbs a { color: rgba(255, 255, 255, .75); transition: color .3s; }
+.ap-crumbs a:hover { color: var(--gold-light); }
+.ap-crumbs span[aria-hidden] { color: rgba(255, 255, 255, .3); }
+.ap-hero h1 {
+  font-family: var(--serif); font-weight: 400; letter-spacing: -.02em;
+  font-size: clamp(40px, 5.6vw, 76px); line-height: 1.04; margin: 14px 0 24px;
+}
+.ap-hero h1 em { font-style: italic; background: var(--gold-grad); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.ap-hero__lead { font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; color: rgba(255, 255, 255, .78); max-width: 56ch; }
+.ap-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+.ap-hero__img { position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .8); }
+.ap-hero__img img { width: 100%; height: 100%; object-fit: cover; }
+.ap-hero__img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 55%, rgba(8, 8, 58, .55)); }
+.ap-hero__tag {
+  position: absolute; left: 20px; bottom: 20px; z-index: 1;
+  font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-light);
+}
+
+/* ---------- Blocos ---------- */
+.ap-section { padding: clamp(72px, 10vw, 130px) 0; }
+.ap-section--white { background: #fff; }
+.ap-two { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.ap-two .section-title { margin-top: 14px; }
+.ap-text p { color: var(--ink-soft); font-size: 17px; line-height: 1.75; }
+.ap-text p + p { margin-top: 18px; }
+
+.ap-services { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
+.ap-service {
+  position: relative; padding: 26px 24px 24px 24px;
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease), border-color .5s;
+}
+.ap-section--white .ap-service { background: var(--paper-2, #f6f5f1); }
+.ap-service:hover { transform: translateY(-4px); box-shadow: 0 24px 48px -28px rgba(8, 8, 58, .35); border-color: rgba(165, 137, 0, .45); }
+.ap-service__num { font-family: var(--serif); font-size: 15px; color: var(--gold); }
+.ap-service h3 { font-family: var(--serif); font-weight: 500; font-size: 23px; line-height: 1.2; color: var(--navy); margin: 8px 0 8px; }
+.ap-service p { font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+
+.ap-profiles { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.ap-profiles li {
+  padding: 10px 18px; border-radius: 999px;
+  border: 1px solid rgba(165, 137, 0, .45); color: var(--navy);
+  font-size: 13px; font-weight: 500;
+}
+
+/* ---------- Como trabalhamos ---------- */
+.ap-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: clamp(40px, 6vw, 72px); counter-reset: s; }
+.ap-step { position: relative; padding: 28px 28px 0 0; border-top: 1px solid var(--line-light); }
+.ap-step::before {
+  counter-increment: s; content: '0' counter(s);
+  display: block; font-family: var(--serif); font-size: 44px; line-height: 1; color: var(--gold-light); margin-bottom: 18px;
+}
+.ap-step h3 { font-family: var(--serif); font-weight: 500; font-size: 25px; color: #fff; margin-bottom: 8px; }
+.ap-step p { font-size: 15px; line-height: 1.6; color: rgba(255, 255, 255, .7); }
+.ap-dark { background: var(--navy); color: #fff; }
+
+/* ---------- Perguntas frequentes ---------- */
+.faq { max-width: 880px; }
+.faq__item { border-bottom: 1px solid var(--line); }
+.faq__item summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 24px;
+  padding: 26px 0; cursor: pointer; list-style: none;
+  font-family: var(--serif); font-weight: 500; font-size: clamp(21px, 2vw, 26px); line-height: 1.25; color: var(--navy);
+}
+.faq__item summary::-webkit-details-marker { display: none; }
+.faq__item summary::after {
+  content: '+'; flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; border: 1px solid var(--line);
+  font-family: var(--sans); font-size: 18px; color: var(--gold);
+  transition: transform .4s var(--ease), background .3s;
+}
+.faq__item[open] summary::after { transform: rotate(45deg); background: rgba(165, 137, 0, .08); }
+.faq__item summary:hover { color: var(--gold); }
+.faq__answer { padding: 0 60px 28px 0; color: var(--ink-soft); font-size: 16px; line-height: 1.75; }
+.faq__answer a { color: var(--navy); border-bottom: 1px solid var(--gold); }
+.faq__note { margin-top: 28px; font-size: 13px; color: var(--ink-soft); opacity: .8; }
+
+/* ---------- Outras áreas ---------- */
+.ap-others { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 40px; }
+.ap-other {
+  display: flex; flex-direction: column; justify-content: space-between; gap: 28px;
+  min-height: 150px; padding: 22px; border-radius: var(--radius);
+  background: #fff; border: 1px solid var(--line);
+  transition: transform .5s var(--ease), border-color .4s, box-shadow .5s var(--ease);
+}
+.ap-other:hover { transform: translateY(-4px); border-color: rgba(165, 137, 0, .5); box-shadow: 0 24px 48px -30px rgba(8, 8, 58, .35); }
+.ap-other span { font-family: var(--serif); font-size: 21px; line-height: 1.2; color: var(--navy); }
+.ap-other small { font-size: 11px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); }
+
+/* ---------- Home: perguntas frequentes e links das áreas ---------- */
+.faq-home { background: #fff; }
+.faq-home__grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(32px, 6vw, 96px); align-items: start; }
+.faq-home .section-title { margin-top: 14px; }
+.faq-home .section-intro { margin-top: 18px; }
+.area__more {
+  display: inline-flex; margin: 0 0 32px 24px; padding-bottom: 3px;
+  font-size: 12px; font-weight: 500; letter-spacing: .08em;
+  color: var(--ink-soft); border-bottom: 1px solid var(--line);
+  transition: color .3s, border-color .3s;
+}
+.area__more:hover { color: var(--navy); border-color: var(--navy); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 1080px) {
+  .ap-others { grid-template-columns: repeat(3, 1fr); }
+  .ap-steps { grid-template-columns: repeat(2, 1fr); row-gap: 40px; }
+}
+@media (max-width: 900px) {
+  .ap-hero__grid, .ap-two, .faq-home__grid { grid-template-columns: 1fr; }
+  .ap-hero__img { aspect-ratio: 16 / 10; max-width: 640px; }
+}
+@media (max-width: 560px) {
+  .ap-services { grid-template-columns: 1fr; }
+  .ap-steps { grid-template-columns: 1fr; }
+  .ap-others { grid-template-columns: 1fr 1fr; }
+  .ap-hero__actions .btn { width: 100%; justify-content: center; }
+  .faq__answer { padding-right: 0; }
+  .area__more { display: flex; width: fit-content; margin: -16px 0 32px 52px; }
+}
